@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-ops-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heart-ops
+  template:
+    metadata:
+      labels:
+        app: heart-ops
+    spec:
+      containers:
+      - name: api-container
+        image: heart-ops-api:v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
